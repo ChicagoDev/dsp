@@ -47,15 +47,13 @@ import sklearn
 
 Did you install Python 2 or 3? Why?  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I installed Python 3.7 because it is the latest version, and what I used previously. 
+
+However, regardless of what I chose to install initially, I can change my python environment on-the-fly with [conda create](https://conda.io/docs/user-guide/tasks/manage-python.html)
 
 ### Q2. Which Python Version Installed   
 
-In the Terminal:
-
-`python3 --version`
-
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Python 3.7.0
 
  
 
