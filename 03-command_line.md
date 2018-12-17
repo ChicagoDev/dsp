@@ -37,13 +37,19 @@ Make a cheat sheet for yourself: a list of at least **ten** commands and what th
 
 What do the following commands do:  
 
-`ls` List the contents of a directory ...  
+`ls` List the contents of a directory ... 
+
 `ls -a` ... including hidden files
-`ls -l`  ... long format ... showing permissions, access times, file size
-`ls -lh`  ... long format + file size type (KB,MB,GB)
-`ls -lah` ... see above. 
-`ls -t`  ... lists most recently modified files first
-`ls -Glp`  ... Color output and place a '/' after file if a directory
+
+`ls -l`  ... long format ... showing permissions, access times, file size 
+
+`ls -lh`  ... long format + file size type (KB,MB,GB) 
+
+`ls -lah` ... see above 
+
+`ls -t`  ... lists most recently modified files first 
+
+`ls -Glp`  ... Color output and place a '/' after file if a directory  
 
 
 
@@ -53,11 +59,15 @@ What do the following commands do:
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-ls -d
-ls -1
-ls -m
-ls -i
-ls -r
+`ls -d`
+
+`ls -1`
+
+`ls -m`
+
+`ls -i`
+
+`ls -r` 
 
 ---
 
