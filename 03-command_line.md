@@ -20,22 +20,32 @@ Here's a list of items with which you should be familiar:
 
 Make a cheat sheet for yourself: a list of at least **ten** commands and what they do.  (Use the 8 items above and add a couple of your own.)  
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+`pwd` Present Working Directory
+`rm` Delete a file
+`rm -r` Delete a directory
+`touch` Create an empty file
+`chmod` Change Mode of a file or directory
+`mv` Move or rename a file/directory
+`ls -a' List all (hidden) files
+`cp` Copy a file/Directory
+`ps` list running proccesses
+`kill` Terminate a proccess
 
 ---
 
 ### Q2.  List Files in Unix   
 
 What do the following commands do:  
-`ls`  
-`ls -a`  
-`ls -l`  
-`ls -lh`  
-`ls -lah`  
-`ls -t`  
-`ls -Glp`  
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+`ls` List the contents of a directory ...  
+`ls -a` ... including hidden files
+`ls -l`  ... long format ... showing permissions, access times, file size
+`ls -lh`  ... long format + file size type (KB,MB,GB)
+`ls -lah` ... see above. 
+`ls -t`  ... lists most recently modified files first
+`ls -Glp`  ... Color output and place a '/' after file if a directory
+
+
 
 ---
 
@@ -43,7 +53,11 @@ What do the following commands do:
 
 Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) and pick 5 of your favorites:
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+ls -d
+ls -1
+ls -m
+ls -i
+ls -r
 
 ---
 
