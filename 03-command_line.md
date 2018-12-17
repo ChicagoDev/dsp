@@ -75,7 +75,9 @@ Explore these other [ls options](http://www.techonthenet.com/unix/basic/ls.php) 
 
 What does `xargs` do? Give an example of how to use it.
 
-> > REPLACE THIS TEXT WITH YOUR RESPONSE
+`xargs` runs a specified command on a stream of delimited data coming from standard input. `xargs` could be used to make a large list of strings uppercase, ex:
+
+`cat name_list | xargs to_upper_case.sh`
 
  
 
