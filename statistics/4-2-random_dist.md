@@ -15,10 +15,9 @@ thinkplot.Pmf(rand_pmf)
 
 thinkplot.Config(xlabel='Value', ylabel='P')
 
-# What went wrong is that I have a complete chart filled out. I believe what this is saying is that every value has an
-# equal chance of being chosen, but it doesn't directly represent the sample because the lines are not accurate enough. 
+# What went wrong is that I have a complete chart filled out. I believe what this is saying is that every value has an equal chance of being chosen, but it doesn't directly represent the sample because the lines are not accurate enough. 
 
-#### Next Cell ###
+# Next Cell ###
 
 thinkplot.Cdf(rand_cdf)
 thinkplot.Config(xlabel='Value', ylabel='P')
