@@ -2,7 +2,14 @@
 
 
 # Solution goes here
+                               
+The probability mass function displays a chart of equal probability of 1/1000 chance of being selected. On the other hand,
+the cumulative disribution function shows an increasing probability from ~0 -> 1.
+                                   
+Code Below                                   
 
+```python
+                                   
 randos = [np.random.random_sample() for i in range(1000)]
 
 rand_cdf = thinkstats2.Cdf(randos, label='NP Rand Float Cdf')
@@ -21,3 +28,5 @@ thinkplot.Config(xlabel='Value', ylabel='P')
 
 thinkplot.Cdf(rand_cdf)
 thinkplot.Config(xlabel='Value', ylabel='P')
+                                   
+ ```
