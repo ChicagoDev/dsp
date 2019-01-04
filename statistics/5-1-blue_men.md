@@ -1,5 +1,9 @@
 [Think Stats Chapter 5 Exercise 1](http://greenteapress.com/thinkstats2/html/thinkstats2006.html#toc50) (blue men)
 
+The percentage of men that qualify to audition for Blue Man Group based on height is 51.03%
+ 
+```python 
+                                   
 import scipy.stats
 
 min_in = (5*12)+10
@@ -27,3 +31,4 @@ result = blue_man_prob
 #_61_or_greater = 1 - max_ht_prob
 #alt_blue_man_prob = _51_or_greater - _61_or_greater
 # print(f'Prob via addition: {blue_man_prob:1.5f}, prob via direct subtraction: {alt_blue_man_prob:1.5f}')
+```
