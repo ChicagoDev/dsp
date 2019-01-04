@@ -1,5 +1,7 @@
 [Think Stats Chapter 3 Exercise 1](http://greenteapress.com/thinkstats2/html/thinkstats2004.html#toc31) (actual vs. biased)
 
+# Solution
+
 If only households with children reported to the survey, the probability of having children in households shifts dramatically. 
 Firstly, the chance of having no children in a household drops to zero, which is obviously incorrect. The other most dramatic
 swing is the probability of having a househould with two children. The probability of having two children jumps from ~ 20% to ~ 40%.
