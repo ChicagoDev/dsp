@@ -1,5 +1,13 @@
 [Think Stats Chapter 2 Exercise 4](http://greenteapress.com/thinkstats2/html/thinkstats2003.html#toc24) (Cohen's d)
 
+# Solution
+The length of pregnency is not effected by birth order. For pregnancys that are carried at least 20 weeks, 
+   The time of pregnency duration between a first child and later children was measured. The average lengths were measured
+    to differ by a Cohen effect size of 0.297, which is negligible. 
+                                           
+                                   
+```python  
+                                   
 import pandas as pd
 
 # Formula for Cohen's D Given from textbook in exercise
@@ -35,4 +43,6 @@ first_to_term = pd.Series([birth for birth in first_babies.values if birth > 20]
 d = CohenEffectSize(first_to_term, later_to_term)
 
 d
+                                   
+```                                   
 
