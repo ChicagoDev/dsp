@@ -1,5 +1,7 @@
 [Think Stats Chapter 5 Exercise 1](http://greenteapress.com/thinkstats2/html/thinkstats2006.html#toc50) (blue men)
 
+# Solution
+
 The percentage of men that qualify to audition for Blue Man Group based on height is 34.27%
  
 ```python 
