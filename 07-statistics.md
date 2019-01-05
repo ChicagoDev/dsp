@@ -69,16 +69,167 @@ Cohen's D is an example of effect size.  Other examples of effect size are:  cor
 
 You will see effect size again and again in results of algorithms that are run in data science.  For instance, in the bootcamp, when you run a regression analysis, you will recognize the t-statistic as an example of effect size.
 
+#### *My Solution:*
+  The length of pregnency is not effected by birth order. For pregnancys that are carried at least 20 weeks, 
+   The time of pregnency duration between a first child and later children was measured. The average lengths were measured
+    to differ by a Cohen effect size of 0.297, which is negligible. 
+                                           
+                                   
+```python  
+                                   
+import pandas as pd
+
+# Formula for Cohen's D Given from textbook in exercise
+
+def CohenEffectSize(group1, group2):
+    """Computes Cohen's effect size for two groups.
+    
+    group1: Series or DataFrame
+    group2: Series or DataFrame
+    
+    returns: float if the arguments are Series;
+             Series if the arguments are DataFrames
+    """
+    diff = group1.mean() - group2.mean()
+
+    var1 = group1.var()
+    var2 = group2.var()
+    n1, n2 = len(group1), len(group2)
+
+    pooled_var = (n1 * var1 + n2 * var2) / (n1 + n2)
+    d = diff / np.sqrt(pooled_var)
+    return d
+
+# SOLUTION
+# SAMPLES The two different samples are First Babies and Non-First Babies
+first_babies = preg[preg.birthord == 1.0].prglngth
+later_babies = preg[preg.birthord != 1.0].prglngth
+
+#first_babies.values
+later_to_term = pd.Series([birth for birth in later_babies.values if birth > 20])
+first_to_term = pd.Series([birth for birth in first_babies.values if birth > 20])
+
+d = CohenEffectSize(first_to_term, later_to_term)
+
+d
+                                   
+```                                   
+
 ### Q2. [Think Stats Chapter 3 Exercise 1](statistics/3-1-actual_biased.md) (actual vs. biased)
 This problem presents a robust example of actual vs biased data.  As a data scientist, it will be important to examine not only the data that is available, but also the data that may be missing but highly relevant.  You will see how the absence of this relevant data will bias a dataset, its distribution, and ultimately, its statistical interpretation.
 
+#### *My Solution:*
+
+If only households with children reported to the survey, the probability of having children in households shifts dramatically. 
+Firstly, the chance of having no children in a household drops to zero, which is obviously incorrect. The other most dramatic
+swing is the probability of having a househould with two children. The probability of having two children jumps from ~ 20% to ~ 40%.
+
+ ```python
+
+# I did a lot of work before getting to this answer. But in the end, this answer is mostly derived from the solution in the 
+textbook. But it isn't a direct copy/paste.
+
+resp = nsfg.ReadFemResp()
+
+%matplotlib inline
+
+import pandas as pd
+import numpy as np
+
+
+kd_count = resp.numkdhh
+
+def BiasPmf(pmf, label): 
+    new_pmf = pmf.Copy(label=label) 
+    
+    for x, p in pmf.Items(): 
+        new_pmf.Mult(x, x) 
+        
+    new_pmf.Normalize() 
+    
+    return new_pmf
+
+# Copied from (Page 37 in textbook). 
+
+pmf = thinkstats2.Pmf(kd_count, label='Real')
+biased = BiasPmf(pmf, label='Biased')
+
+thinkplot.PrePlot(2)
+thinkplot.Pmfs([pmf, biased])
+thinkplot.Show(xlabel="Kids in HH", ylabel="PMF")
+
+```
+
 ### Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
-This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
+This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3. 
+
+#### *My Solution:*
+                               
+The probability mass function displays a chart of equal probability of 1/1000 chance of being selected. On the other hand,
+the cumulative disribution function shows an increasing probability from ~0 -> 1.
+                                   
+Code Below                                   
+
+```python
+                                   
+randos = [np.random.random_sample() for i in range(1000)]
+
+rand_cdf = thinkstats2.Cdf(randos, label='NP Rand Float Cdf')
+
+rand_pmf = thinkstats2.Pmf(randos, label='NP Rand Float Pmf')
+
+
+thinkplot.Pmf(rand_pmf)
+
+
+thinkplot.Config(xlabel='Value', ylabel='P')
+
+# What went wrong is that I have a complete chart filled out. I believe what this is saying is that every value has an equal chance of being chosen, but it doesn't directly represent the sample because the lines are not accurate enough. 
+
+# Next Cell ###
+
+thinkplot.Cdf(rand_cdf)
+thinkplot.Config(xlabel='Value', ylabel='P')
+                                   
+ ```
 
 ### Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
 
+#### *My Solution:*
 
+The percentage of men that qualify to audition for Blue Man Group based on height is 34.27%
+ 
+```python 
+                                   
+import scipy.stats
+
+min_in = (5*12)+10
+max_in = (6*12)+1
+
+min_height = min_in * 2.54
+max_height = max_in * 2.54
+
+mu = 178.0
+sigma = 7.7
+
+min_ht_prob = scipy.stats.norm.cdf(min_height,loc=mu,scale=sigma)
+max_ht_prob = scipy.stats.norm.cdf(max_height,loc=mu,scale=sigma)
+
+#print(f'Min ht prob: {min_ht_prob:1.5f}, Max ht prob: {max_ht_prob:1.5f}')
+
+blue_man_prob = max_ht_prob - min_ht_prob
+
+print(f'The percentage of men that qualify to audition \n for Blue Man Group based on height is {blue_man_prob*100:2.2f}%')
+
+result = blue_man_prob
+
+# Tested because of the question of > or >= in the percentiles
+#_51_or_greater = 1 - min_ht_prob
+#_61_or_greater = 1 - max_ht_prob
+#alt_blue_man_prob = _51_or_greater - _61_or_greater
+# print(f'Prob via addition: {blue_man_prob:1.5f}, prob via direct subtraction: {alt_blue_man_prob:1.5f}')
+```
 
 ### Q5. Bayesian (Elvis Presley twin) 
 
